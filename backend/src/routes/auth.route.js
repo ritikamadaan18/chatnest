@@ -6,9 +6,15 @@ import {
   updateProfile,
 } from "../controllers/auth.controller.js";
 import { protectRoute } from "../middleware/auth.middleware.js";
+import { arcjetProtection } from "../middleware/arcjet.middleware.js";
 const router = Router();
 
+router.use(arcjetProtection);
+
 router.post("/signup", signup);
+router.get("/test", (req, res) => {
+  res.status(200).json({ message: "Test endpoint is working!" });
+});
 
 router.post("/login", login);
 
