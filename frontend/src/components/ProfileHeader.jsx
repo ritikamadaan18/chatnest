@@ -17,12 +17,12 @@ const ProfileHeader = () => {
     const file = e.target.files[0];
     if (!file) return;
     const reader = new FileReader();
-    reader.readAsDataURL(file);
     reader.onloadend = async () => {
       const base64Image = reader.result;
       await updateProfile({ profilePic: base64Image });
       setSelectedImg(base64Image);
     };
+    reader.readAsDataURL(file);
   };
 
   return (
